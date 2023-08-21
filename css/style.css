@@ -1,0 +1,30 @@
+#griglia {
+  width: 800px;
+  aspect-ratio: 1;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cell {
+  width: calc(100% / 10);
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cell_easy {
+  width: calc(100% / 10);
+}
+
+.cell_medium {
+  width: calc(100% / 9);
+}
+
+.cell_hard {
+  width: calc(100% / 7);
+}
+
+.azure {
+  background-color: azure;
+}
