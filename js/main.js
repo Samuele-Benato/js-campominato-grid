@@ -1,38 +1,48 @@
 const button = document.getElementById("pulsante");
 const grid = document.getElementById("griglia");
-const difficult = document.getElementById("difficoltà");
+const difficult = document.getElementById("difficolta");
 
 button.addEventListener("click", function () {
-  let colonne = 10;
+  const difficultSelected = parseInt(difficult.value);
+  let colonne = 10 * 10;
 
-  if (difficult.value == "1") {
-    grid.classList.add("difficult_easy");
-    colonne = 10;
+  if (difficultSelected == "100") {
+    colonne = 10 * 10;
   }
-  if (difficult.value == "2") {
-    grid.classList.add("difficult _medium");
-    colonne = 9;
+  if (difficultSelected == "81") {
+    colonne = 9 * 9;
   }
-  if (difficult.value == "3") {
-    grid.classList.add("difficult _hard");
-    colonne = 7;
+  if (difficultSelected == "49") {
+    colonne = 7 * 7;
   }
-  generaGriglia();
 
-  return colonne;
+  generaGriglia(colonne, difficultSelected);
+
+  return colonne, difficultSelected;
 });
 
-function generaGriglia() {
+function generaGriglia(colonne, difficultSelected) {
   grid.innerHTML = "";
-  for (let i = 1; i <= colonne * colonne; i++) {
-    const cell = generaCella(i);
+  for (let i = 1; i <= colonne; i++) {
+    const cell = generaCella(i, difficultSelected);
     grid.append(cell);
   }
 }
 
-function generaCella() {
+function generaCella(i, difficultSelected) {
   const cell = document.createElement("div");
   cell.classList.add("cell");
+
+  if (difficultSelected == "100") {
+    cell.classList.add("difficult_easy");
+  }
+  if (difficultSelected == "81") {
+    cell.classList.add("difficult_medium");
+  }
+  if (difficultSelected == "49") {
+    cell.classList.add("difficult_hard");
+  }
+
   cell.innerText = i;
 
   cell.addEventListener("click", function () {
